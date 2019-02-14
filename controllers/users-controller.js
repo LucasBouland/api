@@ -18,6 +18,7 @@ exports.getUserById = (req, resp) => {
 
 //POST /
 exports.createUser = (req, resp) => {
+    console.log("b");
     let obj = new users(req.body);
     let regexp = /^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\da-zA-Z]){6,}.*$/;
     if (regexp.test(obj.password)) {

@@ -10,7 +10,8 @@ exports.token = (req, resp, next) => {
                 if (err) {
                     resp.status(403).json({ status: "error", message: err.message });
                 } else {
-                    console.log(`mail: ${decoded.login}`);
+
+                    console.log(decoded);
                     req['user'] = decoded;
                     next();
                 }

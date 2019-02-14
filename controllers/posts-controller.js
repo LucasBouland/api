@@ -19,6 +19,7 @@ exports.getPostById = (req, resp) => {
 
 //POST /
 exports.createPost = (req, resp) => {
+    console.log("aa");
     let obj = new posts(req.body);
     //TODO check post integrité
     obj.save((err, data) => resp.json(extractData(err, data)));
