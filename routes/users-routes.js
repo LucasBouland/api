@@ -10,6 +10,6 @@ router.route('/')
 
 router.route('/:id')
     .get(controller.getUserById)
-    .put(auth.token, controller.updateUser);
+    .put(auth.token, auth.self, controller.updateUser);
 
 module.exports = router;
