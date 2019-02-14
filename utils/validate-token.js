@@ -23,7 +23,7 @@ exports.token = (req, resp, next) => {
 
 exports.self = (req,resp,next) => {
     let user = req['user'];
-    if (user._id === req.body._id)
+    if (user.id === req.body.id)
     {
         next();
     }
@@ -35,7 +35,6 @@ exports.self = (req,resp,next) => {
 
 exports.admin = (req, resp, next) => {
     let user = req['user'];
-    console.log(user);
     if (user.admin == true) {
         next();
     } else {
