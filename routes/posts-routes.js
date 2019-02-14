@@ -12,4 +12,10 @@ router.route('/:id')
     .put(auth.token, auth.admin, controller.updatePost)
     .delete(auth.token, auth.admin, controller.deletePost);
 
+router.route('/comment')
+    .post(auth.token, controller.createComment);
+
+router.route('comment/:id')
+    .delete(auth.token, auth.admin, controller.deleteComment);
+
 module.exports = router;

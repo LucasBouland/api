@@ -1,4 +1,5 @@
 let posts = require('../models/posts');
+let comments = require('../models/comments');
 let sha1 = require('../utils/sha1');
 
 // GET /
@@ -35,7 +36,23 @@ exports.deletePost = (req, resp) => {
             resp.json(err);
         resp.json({ 'message': 'News successfully deleted' });
     })
-}
+};
+
+//POST /
+exports.createComment = (req, resp) => {
+    let obj = new comments(req.body);
+    obj.save((err, data) => resp.json(extractData(err, data)));
+};
+
+//DELETE /:id
+exports.deleteComment = (req, resp) => {
+    comments.remove({ _id: req.params.id }, (err, data) => {
+        if (err)
+            resp.json(err);
+        resp.json({ 'message': 'Comment successfully deleted' });
+    })
+};
+
 
 function extractData(err, data) {
     if (err)
