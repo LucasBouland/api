@@ -26,6 +26,6 @@ module.exports = mongoose.model('User', new Schema({
             type: String,
             enum: ['actived', 'closed', 'pending']
         }],
-        default: 'pending'
+        default: 'actived'
     }
 }));

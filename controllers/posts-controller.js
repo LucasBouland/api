@@ -41,16 +41,20 @@ exports.deletePost = (req, resp) => {
 //POST /
 exports.createComment = (req, resp) => {
     let obj = new comments(req.body);
-    obj.save((err, data) => resp.json(extractData(err, data)));
+    posts.findOne({title: req.body.post}, (err,post) => {
+        post.comments.push(obj);
+        post.save((err, data) => resp.json(extractData(err, data)));
+    })
+
 };
 
 //DELETE /:id
 exports.deleteComment = (req, resp) => {
-    comments.remove({ _id: req.params.id }, (err, data) => {
-        if (err)
-            resp.json(err);
-        resp.json({ 'message': 'Comment successfully deleted' });
-    })
+    let obj = new comments(req.body);
+    posts.findOne({title:req.body.post}, (err,post) => {
+        post.comments.splice(post.comments.indexOf(obj), 1);
+        post.save((err, data) => resp.json(extractData(err, data)));
+    });
 };
 
 
