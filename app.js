@@ -3,7 +3,7 @@ let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
 
 let usersRoutes = require('./routes/users-routes');
-let eventsRoutes = require('./routes/events-routes');
+let postsRoutes = require('./routes/posts-routes');
 let authController = require('./controllers/authentication-controller');
 
 let auth = require('./utils/validate-token');
@@ -32,9 +32,8 @@ app.use(bodyParser.urlencoded({ extended: false })); //URL
 app.use(bodyParser.json()); //BODY
 
 app.post('/authentication', authController);
-
-app.use('/api/users', auth.token, usersRoutes);
-app.use('/api/events', auth.token, eventsRoutes);
+app.use('/api/posts', postsRoutes);
+app.use('/api/users', usersRoutes);
 
 app.route('/').get((req, resp) => {
     resp.json('WEB API');

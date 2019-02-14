@@ -1,6 +1,7 @@
 let mongoose = require('mongoose');
-
 let Schema = mongoose.Schema;
+let commentSchema = require('./comments');
+
 
 
 
@@ -17,6 +18,7 @@ module.exports = mongoose.model('Post', new Schema({
         type: String,
         required: 'Auteur obligatoire'
     },
+    comments: [commentSchema.schema],
     createdAt: {
         type: Date,
         default: Date.now()

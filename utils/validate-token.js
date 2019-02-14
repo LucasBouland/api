@@ -11,7 +11,7 @@ exports.token = (req, resp, next) => {
                     resp.status(403).json({ status: "error", message: err.message });
                 } else {
                     console.log(`mail: ${decoded.login}`);
-                    req.set('user', decoded);
+                    req['user'] = decoded;
                     next();
                 }
             });
@@ -22,7 +22,8 @@ exports.token = (req, resp, next) => {
 }
 
 exports.admin = (req, resp, next) => {
-    let user = req.get('user');
+    let user = req['user'];
+    console.log(user);
     if (user.admin == true) {
         next();
     } else {

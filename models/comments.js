@@ -4,7 +4,7 @@ let Schema = mongoose.Schema;
 
 
 
-module.exports = mongoose.model('comment', new Schema({
+module.exports = mongoose.model('Comment', new Schema({
     content: {
         type: String,
         required: 'Contenu obligatoire'

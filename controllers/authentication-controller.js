@@ -12,7 +12,7 @@ module.exports = (req, resp) => {
         if (data) {
             console.log(data.status);
             if (data.status == 'actived') {
-                let token = jwt.sign({ id: data._id, login: data.mail }, conf.key, { expiresIn: 1440 });
+                let token = jwt.sign({ id: data._id, login: data.mail, admin: data.admin }, conf.key, { expiresIn: 1440 });
                 resp.json({ success: true, message: 'login OK', token: token });
             } else {
                 resp.status(400).json({ success: false, message: `Le compte utilisateur est ${data.status}` });
