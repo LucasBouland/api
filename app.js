@@ -7,13 +7,13 @@ let postsRoutes = require('./routes/posts-routes');
 let authController = require('./controllers/authentication-controller');
 
 let auth = require('./utils/validate-token');
-
+let cors = require('cors');
 let app = express();
 
 //SWAGGER
 //let swag = require('swagger-ui-express');
 //let swagDoc = require('./swagger.yaml');
-
+app.use(cors());
 let swag = require('express-swagger-generator')(app);
 let options = require('./swagger');
 swag(options);

@@ -6,10 +6,10 @@ let auth = require('../utils/validate-token');
 //router.get('/', controller.getAllUsers);
 router.route('/')
     .get(controller.getAllUsers)
-    .post( controller.createUser);
+    .post(controller.createUser);
 
 router.route('/:id')
     .get(controller.getUserById)
-    .put(auth.admin, controller.updateUser);
+    .put(auth.token, controller.updateUser);
 
 module.exports = router;

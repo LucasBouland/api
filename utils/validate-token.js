@@ -19,7 +19,18 @@ exports.token = (req, resp, next) => {
             resp.status(401).json({ status: "error", message: "token required" });
     } else
         resp.status(401).json({ status: "error", message: "token required" });
-}
+};
+
+exports.self = (req,resp,next) => {
+    if (user._id === req.body._id)
+    {
+        next();
+    }
+    else
+    {
+        resp.status(403).json({ status: "error", message: "change pas les autres stp" });
+    }
+};
 
 exports.admin = (req, resp, next) => {
     let user = req['user'];
