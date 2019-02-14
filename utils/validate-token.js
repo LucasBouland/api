@@ -22,6 +22,7 @@ exports.token = (req, resp, next) => {
 };
 
 exports.self = (req,resp,next) => {
+    let user = req['user'];
     if (user._id === req.body._id)
     {
         next();
